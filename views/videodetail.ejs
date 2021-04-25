@@ -1,0 +1,106 @@
+<%- include('partials/header') %>
+<div class="videodetailbody">
+<div class="container">
+  <div class="viddetailheader">
+      <% if(song != undefined) {%>
+    <p class="viddetailtitle"><%= song.title %></p>
+    <span class="viddetaildetail">Movie Name: <strong><%= song.moviename %></strong>Singer: <strong><%= song.originalsinger %></strong>Genre: <strong><%= song.genre %></strong></span>
+    <% } %>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-7">
+      <iframe class="detailvideoselected" src="https://www.youtube.com/embed/<%= requestedvideo %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-5">
+      <div class="detailnote">
+        <span class="noteslabel">Notes</span>
+        <div class="notecontent">
+          <% if(song != undefined) {%>
+          <p><%= song.notes %></p>
+          <% } else {%>
+            <p>Notes are not available. Kindly request for notes.</p>
+            <% } %>
+        </div>
+        <% if(song != undefined) {%>
+        <a class="btn downloadfile" href="/download/<%= song.youTubeId %>">Download Notes</a>
+        <% } else {%>
+          <a class="btn downloadfile" data-toggle="modal" data-target="#noterequest">Request Notes</a>
+          <% } %>
+
+          <div class="modal fade" id="noterequest" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+
+                <div class="modal-body">
+                  <form role="form">
+                    <div class="form-group">
+                      <label for="fname">First Name</label>
+                      <input type="text" required class="form-control" id="fname" placeholder="First Name?">
+                    </div>
+                    <div class="form-group">
+                      <label for="lname">Last Name</label>
+                      <input type="text" required class="form-control" id="lname" placeholder="Last Name?">
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="email" required class="form-control" id="email" placeholder="Email Address">
+                    </div>
+                    <div class="form-group">
+                      <label for="psw">Song Name</label>
+                      <select required class="form-control" name="">
+                        <option value="0">Select a Song</option>
+                        <% items.forEach(function(item){ %>
+                        <option value="<%= item.snippet.title %>"><%= item.snippet.title %></option>
+                        <% }) %>
+                      </select>
+                    </div>
+                    <button type="submit" class="btn btn-block">Request
+                    </button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove"></span> Cancel
+                  </button>
+                  <p>Need <a href="#">help?</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+      </div>
+
+    </div>
+  </div>
+  <!-- <div class="row">
+    <p>Suggestions</p>
+
+  </div> -->
+  <div class="row"  id="suggetion">
+    <% items.forEach(function(item){ %>
+      <% var str = item.snippet.title %>
+      <% var res = str.split("|"); %>
+      <% var restitle = res[0]; %>
+    <div class="col-md-4">
+      <div class="thumbnailvid">
+        <iframe class="detailvideosuggestion" src="https://www.youtube.com/embed/<%= item.snippet.resourceId.videoId %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+        <p class="videosuggestiontitle"><strong><%= restitle %></strong></p>
+        <a href="/videodetail/<%= item.id %>" class="btn detailsbtn">Details</a>
+      </div>
+
+    </div>
+    <% }) %>
+  </div>
+  <div class="row">
+    <a href="/allvideos" class="seemore" >View All</a>
+  </div>
+
+</div>
+</div>
+<%- include('partials/footer') %>

@@ -1,0 +1,49 @@
+{
+  "name": "prachipiano",
+  "version": "1.0.0",
+  "description": "A Webapplication for Prachi's world of Piano",
+  "main": "app.js",
+  "engines": {
+    "node": "12.17.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Piano",
+    "Prachi",
+    "music",
+    "piano",
+    "lover",
+    "piano",
+    "teacher",
+    "pianist",
+    "portfolio"
+  ],
+  "author": "The coders of Night",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.0",
+    "express-message": "^1.2.3",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.8.1",
+    "mongoose": "^5.11.8",
+    "mongoose-findorcreate": "^3.0.0",
+    "multer": "^1.4.2",
+    "nodemailer": "^6.4.17",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-local-mongoose": "^6.0.1",
+    "pdfkit": "^0.11.0",
+    "req-flash": "0.0.3",
+    "wkhtmltopdf": "^0.3.4",
+    "youtube-v3-api": "^1.1.1"
+  }
+}

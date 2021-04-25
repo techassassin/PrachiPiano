@@ -1,0 +1,84 @@
+<%- include('partials/header') %>
+<div class="container">
+  <div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'dashboard')" >Dashboard</button>
+    <button class="tablinks" onclick="openTab(event, 'addsong')" id="defaultOpen">Add Song Details</button>
+    <button class="tablinks" onclick="openTab(event, 'editsong')">Edit Song Details</button>
+  </div>
+
+  <div id="dashboard" class="tabcontent">
+    <h3>dashboard</h3>
+    <p>dashboard will be added soon.</p>
+  </div>
+
+  <div id="addsong" class="tabcontent">
+    <form class="form-horizontal" action="/admin/addsong" method="post">
+      <div class="form-group row">
+
+        <div class="col-md-6">
+            <label class="control-label" for="desc">YouTube</label>
+          <select required class="form-control" name="youTubeId">
+            <option value="0">Select song from YouTube </option>
+            <% items.forEach(function(item){ %>
+            <option value="<%= item.id %>"><%= item.snippet.title %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="title">Song Title</label>
+          <input required type="text" class="form-control" id="title" placeholder="Enter Song Title" name="title">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-4">
+          <label for="moviename">Movie Name</label>
+          <input required type="text" class="form-control" id="email" placeholder="Enter Movie/Album Name" name="moviename">
+        </div>
+        <div class="col-md-4">
+          <label for="singer">Singer</label>
+          <input type="text" class="form-control" id="singer" placeholder="Enter Original Singer Name" name="originalsinger">
+        </div>
+        <div class="col-md-4">
+          <label for="genre">Genre</label>
+          <select class="form-control" id="genre" placeholder="Enter Original Singer Name" name="genre">
+            <option value="0">Select a Genre</option>
+            <option value="Classic Hindi Song">Classic Hindi Song</option>
+            <option value="New Bollywood Song">New Bollywood Song</option>
+            <option value="Old English Classic">Old English Classic</option>
+            <option value="Patriotic Song">Patriotic Song</option>
+            <option value="Regional Song">Regional Song</option>
+            <option value="New English Song">New English Song</option>
+            <option value="Evergreen Hindi Song">Evergreen Hindi Song</option>
+            <option value="Lesson">Lesson</option>
+
+          </select>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+
+        <div class="col-md-12">
+          <label  for="notes">Notes</label>
+          <!-- <input type="text" class="form-control" id="note" placeholder="Enter Notes" name="notes"> -->
+          <textarea rows="4" class="form-control" id="notes" placeholder="Enter Notes" name="notes"></textarea>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <div class="col-md-2">
+          <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div id="editsong" class="tabcontent">
+    <h3>Edit Song</h3>
+    <p>Functionality will be added soon.</p>
+  </div>
+</div>
+
+
+<%- include('partials/footer') %>

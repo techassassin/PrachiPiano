@@ -1,0 +1,75 @@
+<%- include('partials/header') %>
+<div class="allvideos">
+  <div class="container1">
+
+  <div class="row">
+    <div class="col-md-3">
+      <div class="filter">
+        <p style="text-align: center; color: #FFF; font-weight: bold;">Filter</p>
+        <label class="labelinput" for="genre">Genre:</label>
+        <select class="filterinput" id="genre" name="genre">
+          <option value="0">Select Genre</option>
+          <option value="Classic Hindi Song">Classic Hindi Song</option>
+          <option value="New Bollywood Song">New Bollywood Song</option>
+          <option value="Old English Classic">Old English Classic</option>
+          <option value="Patriotic Song">Patriotic Song</option>
+          <option value="Regional Song">Regional Song</option>
+          <option value="New English Song">New English Song</option>
+          <option value="Evergreen Hindi Song">Evergreen Hindi Song</option>
+          <option value="Lesson">Lesson</option>
+
+        </select>
+        <label class="labelinput" for="singer">Singer:</label>
+        <select class="filterinput" id="singer" name="singer">
+          <option value="0">Select Singer</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-sm-2">
+          <% if(previouspage != undefined) {%>
+        <a class="previousbtn" href="/allvideo/<%= previouspage %>">Previous</a>
+        <% } %>
+        </div>
+        <div class="col-sm-offset-8 col-sm-2">
+        <% if(nextpage != undefined) {%>
+        <a class="nextbtn" href="/allvideo/<%= nextpage %>">Next</a>
+        <% } %>
+        </div>
+      </div>
+      <div class="row">
+        <% items.forEach(function(item){ %>
+          <% var str = item.snippet.title %>
+          <% var res = str.split("|"); %>
+          <% var restitle = res[0]; %>
+
+        <div class="col-md-4">
+          <div class="thumbnailvid">
+            <iframe class="detailvideosuggestion" src="https://www.youtube.com/embed/<%= item.snippet.resourceId.videoId %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+            <p class="videosuggestiontitle"><strong><%= restitle %></strong></p>
+            <a href="/videodetail/<%= item.id %>" class="btn detailsbtn">Details</a>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+      <div class="row">
+        <div class="col-sm-2">
+          <% if(previouspage != undefined) {%>
+        <a class="previousbtn" href="/allvideo/<%= previouspage %>">Previous</a>
+        <% } %>
+        </div>
+        <div class="col-sm-offset-8 col-sm-2">
+        <% if(nextpage != undefined) {%>
+        <a class="nextbtn" href="/allvideo/<%= nextpage %>">Next</a>
+        <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<%- include('partials/footer') %>
