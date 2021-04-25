@@ -75,7 +75,7 @@ const songSchema = new mongoose.Schema({
 const Song = new mongoose.model("Song", songSchema);
 console.log("process key"+process.env.KEY);
 var key = process.env.KEY;
-const url = "https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLzbDe7pUoNqdX893apJ1MYDooNdDXiGrF&key="+key+"&maxResults=50"
+const url = "https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLzbDe7pUoNqdX893apJ1MYDooNdDXiGrF&key="+key+"&maxResults=6"
 const urldetail = "https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLzbDe7pUoNqdX893apJ1MYDooNdDXiGrF&key="+key+"&maxResults=10"
 app.get("/", function(req, res) {
   var videoid = [];
