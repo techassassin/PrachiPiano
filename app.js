@@ -94,6 +94,9 @@ app.get("/", function(req, res) {
       PostErrorMsg: req.flash('PostErrorMsg')
     });
   })
+  .catch(error=>{
+
+  });
 });
 
 app.get("/allvideos", function(req, res) {
@@ -133,6 +136,9 @@ app.get("/allvideo/:id", function(req, res) {
       previouspage: response.data.prevPageToken,
     });
   })
+  .catch(error=>{
+
+  });
 });
 
 
@@ -167,6 +173,9 @@ app.get("/videodetail/:id", (req, res) => {
       }
     }
   })
+  .catch(error=>{
+
+  });
 
 })
 
@@ -228,6 +237,9 @@ app.get("/admin", function(req, res) {
       items: videoid,
     });
   })
+  .catch(error=>{
+
+  });
 })
 
 
