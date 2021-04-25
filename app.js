@@ -78,25 +78,23 @@ var key = process.env.KEY;
 const url = "https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLzbDe7pUoNqdX893apJ1MYDooNdDXiGrF&key="+key+"&maxResults=6"
 const urldetail = "https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLzbDe7pUoNqdX893apJ1MYDooNdDXiGrF&key="+key+"&maxResults=10"
 app.get("/", function(req, res) {
-  var videoid = [];
-  axios.get(url).then(response => {
-    for (var i in response.data.items) {
-      var item = response.data.items[i];
-      if (item.snippet.title.includes('piano') || item.snippet.title.includes('Piano') || item.snippet.title.includes('Keyboard') || item.snippet.title.includes('keyboard')) {
-        videoid.push(item);
-      }
-    }
+  // var videoid = [];
+  // axios.get(url).then(response => {
+  //   for (var i in response.data.items) {
+  //     var item = response.data.items[i];
+  //     if (item.snippet.title.includes('piano') || item.snippet.title.includes('Piano') || item.snippet.title.includes('Keyboard') || item.snippet.title.includes('keyboard')) {
+  //       videoid.push(item);
+  //     }
+  //   }
+  //
+  //   console.log("Flash message: " + req.flash('PostSuccessMsg'));
 
-    console.log("Flash message: " + req.flash('PostSuccessMsg'));
-    res.render("home", {
-      items: videoid,
-      PostSuccessMsg: req.flash('PostSuccessMsg'),
-      PostErrorMsg: req.flash('PostErrorMsg')
-    });
-  })
-  .catch(error=>{
-
-  });
+  // {
+  //   items: videoid,
+  //   PostSuccessMsg: req.flash('PostSuccessMsg'),
+  //   PostErrorMsg: req.flash('PostErrorMsg')
+  // }
+    res.render("home");
 });
 
 app.get("/allvideos", function(req, res) {
